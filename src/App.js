@@ -109,7 +109,9 @@ function App() {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       success: function(response) {
         setButtonLabel('Ordered');
-        setFoodItems(response);
+        if (response != "Session is invalid!"){
+          setFoodItems(response);
+        }
         console.log(response);
       },
       error: function(error) {
@@ -617,6 +619,7 @@ function LoginedPage(props){
 
   const handleAdviseClick = () => {
     setUserButtonLabel('Advise');
+    setAdviseLabel(null);
   };
   const healthRecommend = () => {
     $.ajax({
