@@ -29,6 +29,10 @@ function App() {
   }
 
   useEffect( () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = urlParams.get('data');
+    const table = data.charAt(0);
+    const session = data.slice(1);
     $.ajax({
       type: 'POST',
       url: 'https://sdp2023-dbapi.herokuapp.com/toorder',
@@ -37,8 +41,8 @@ function App() {
       crossDomain: true,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
       data:{
-        table:'3',
-        session:'342752'
+        table:table,
+        session:session
       },
       success: function(response) {
         setFoodItems(response[0][0]);
