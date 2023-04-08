@@ -105,6 +105,7 @@ function App() {
   };
 
   const handleOrderedClick = () => {
+    setButtonLabel('Ordered');
     $.ajax({
       type: 'GET',
       url: 'https://sdp2023-dbapi.herokuapp.com/ordered',
@@ -113,7 +114,7 @@ function App() {
       crossDomain: true,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       success: function(response) {
-        setButtonLabel('Ordered');
+        //setButtonLabel('Ordered');
         if (response != "Session is invalid!"){
           setFoodItems(response);
         }
