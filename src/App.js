@@ -82,8 +82,7 @@ function App() {
   }, []);
 
  
-  const handleMenuClick = () => {
-    setButtonLabel('Menu');
+  /*const handleMenuClick = () => {
     $.ajax({
       type: 'POST',
       url: 'https://sdp2023-dbapi.herokuapp.com/toorder',
@@ -95,17 +94,42 @@ function App() {
         setFoodItems(response[0][0]);
         setTable(response[1]['table']);
         setFoodType(getUniqueTypes(response[0][0]));
-        //setButtonLabel('Menu');
+        setButtonLabel('Menu');
       },
       error: function(error) {
         console.error(error);
       }
     }); 
     //setFoodItems(['Wings', 'Mozzarella Sticks', 'Nachos']);
+  };*/
+
+  const handleMenuClick = () => {
+    fetch('https://sdp2023-dbapi.herokuapp.com/toorder', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setFoodItems(data[0][0]);
+        setTable(data[1]['table']);
+        setFoodType(getUniqueTypes(data[0][0]));
+        setButtonLabel('Menu');
+      })
+      .catch((error) => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
   };
+  
 
   const handleOrderedClick = () => {
-    setButtonLabel('Ordered');
     $.ajax({
       type: 'GET',
       url: 'https://sdp2023-dbapi.herokuapp.com/ordered',
@@ -114,7 +138,7 @@ function App() {
       crossDomain: true,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       success: function(response) {
-        //setButtonLabel('Ordered');
+        setButtonLabel('Ordered');
         if (response != "Session is invalid!"){
           setFoodItems(response);
         }
