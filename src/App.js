@@ -82,7 +82,7 @@ function App() {
   }, []);
 
  
-  /*const handleMenuClick = () => {
+  const handleMenuClick = () => {
     $.ajax({
       type: 'POST',
       url: 'https://sdp2023-dbapi.herokuapp.com/toorder',
@@ -101,34 +101,8 @@ function App() {
       }
     }); 
     //setFoodItems(['Wings', 'Mozzarella Sticks', 'Nachos']);
-  };*/
-
-  const handleMenuClick = () => {
-    fetch('https://sdp2023-dbapi.herokuapp.com/toorder', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      credentials: 'include',
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setFoodItems(data[0][0]);
-        setTable(data[1]['table']);
-        setFoodType(getUniqueTypes(data[0][0]));
-        setButtonLabel('Menu');
-      })
-      .catch((error) => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
   };
   
-
   const handleOrderedClick = () => {
     $.ajax({
       type: 'GET',
@@ -226,7 +200,7 @@ function App() {
           {buttonLabel === 'Logined' && loginLabel ==='Logined' && <LoginedPage loginLabel={setLoginLabel} setOrder ={setFoodOrder}/>}
         </main>
         <footer className="App-footer">
-          <button className="App-menu-button" onClick={handleMenuClick} onTouchStart={handleMenuClick}>Menu</button>
+          <button className="App-menu-button" onClick={() => handleMenuClick()} >Menu</button>
           <button className="App-ordered-button" onClick={handleOrderedClick} onTouchStart={handleOrderedClick}>Ordered</button>
           <button className="App-submit-button"onClick={handleSubmitPageClick} onTouchStart={handleSubmitPageClick}>Submit</button>
         </footer>
