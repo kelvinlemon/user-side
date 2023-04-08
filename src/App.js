@@ -200,9 +200,9 @@ function App() {
           {buttonLabel === 'Logined' && loginLabel ==='Logined' && <LoginedPage loginLabel={setLoginLabel} setOrder ={setFoodOrder}/>}
         </main>
         <footer className="App-footer">
-          <button type="submit" onClick={handleMenuClick} onTouchStart={handleMenuClick}>Menu</button>
-          <button type="submit" onClick={handleOrderedClick} onTouchStart={handleOrderedClick}>Ordered</button>
-          <button type="submit" onClick={handleSubmitPageClick} onTouchStart={handleSubmitPageClick}>Submit</button>
+          <button type="button" onClick={handleMenuClick} onTouchEnd={handleMenuClick}>Menu</button>
+          <button type="button" onClick={handleOrderedClick} onTouchEnd={handleOrderedClick}>Ordered</button>
+          <button type="button" onClick={handleSubmitPageClick} onTouchEnd={handleSubmitPageClick}>Submit</button>
         </footer>
       </div>
     );}
