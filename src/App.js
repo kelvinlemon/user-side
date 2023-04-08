@@ -894,7 +894,7 @@ function LoginedPage(props){
               </PieChart>
               <ul>
                 {items.map((item, index) => (
-                  <li key={index}>{index+1}: {item}</li>
+                  <li key={index}>{index+1}: {item} {chartData[index]['percentage']}%</li>
                 ))}
               </ul>
         </>
