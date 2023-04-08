@@ -174,15 +174,15 @@ function App() {
             <img src="logo.png" alt="Logo" />
             { loginLabel === 'Logined' && buttonLabel === 'Logined'? (
             <div className="App-login">
-              <button className="App-Login-button"onClick={handleLogoutClick}>man logout</button>
+              <button type="submit" onClick={handleLogoutClick}>man logout</button>
             </div>
             ):loginLabel === 'Login' && buttonLabel != 'Login'? (
               <div className="App-login">
-                <button className="App-Login-button"onClick={handleLoginClick}>man logoin</button>
+                <button type="submit" onClick={handleLoginClick}>man logoin</button>
               </div>
             ):loginLabel === 'Logined' && buttonLabel != 'Logined'? (
               <div className="App-login">
-                <button className="App-Login-button"onClick={handleUserPageClick}>User</button>
+                <button type="submit" onClick={handleUserPageClick}>User</button>
               </div>
             ):null}
           </div>
@@ -200,9 +200,9 @@ function App() {
           {buttonLabel === 'Logined' && loginLabel ==='Logined' && <LoginedPage loginLabel={setLoginLabel} setOrder ={setFoodOrder}/>}
         </main>
         <footer className="App-footer">
-          <button type="button" onClick={handleMenuClick} onTouchEnd={handleMenuClick}>Menu</button>
-          <button type="button" onClick={handleOrderedClick} onTouchEnd={handleOrderedClick}>Ordered</button>
-          <button type="button" onClick={handleSubmitPageClick} onTouchEnd={handleSubmitPageClick}>Submit</button>
+          <button type="submit" onClick={handleMenuClick} onTouchEnd={handleMenuClick}>Menu</button>
+          <button type="submit" onClick={handleOrderedClick} onTouchEnd={handleOrderedClick}>Ordered</button>
+          <button type="submit" onClick={handleSubmitPageClick} onTouchEnd={handleSubmitPageClick}>Submit</button>
         </footer>
       </div>
     );}
@@ -850,10 +850,10 @@ function LoginedPage(props){
   return(
     <div>
       <div className="App-logined">
-        <button className="" onClick={handleHistoryClick}>History</button>
-        <button className="" onClick={handleAdviseClick}>Advise</button>
-        <button className=""onClick={handleChartClick}>Chart</button>
-        <button className=""onClick={handleAIClick}>AI assistant</button>
+        <button type="submit" onClick={handleHistoryClick}>History</button>
+        <button type="submit" onClick={handleAdviseClick}>Advise</button>
+        <button type="submit" onClick={handleChartClick}>Chart</button>
+        <button type="submit" onClick={handleAIClick}>AI assistant</button>
       </div>
       {userbuttonLabel === 'History' ? (
         <div className="App-food-items">
@@ -913,9 +913,9 @@ function LoginedPage(props){
       {adviseLabel === 'recommend'?(
         <>
             {foodItems.foodName}
-            <button onClick={() => handleIncrement(foodItems)}>+</button>
+            <button type="submit" onClick={() => handleIncrement(foodItems)}>+</button>
             <span>{foodValues[foodItems.foodName] || 0}</span>
-            <button onClick={() => handleDecrement(foodItems)}>-</button>
+            <button  type="submit" onClick={() => handleDecrement(foodItems)}>-</button>
         </>
       )
       :adviseLabel === 'AI'?(
