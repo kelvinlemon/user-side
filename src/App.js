@@ -771,7 +771,6 @@ function LoginedPage(props){
       withCredentials: 'include',
       crossDomain: true,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-
       success: function(response) {
         console.log(response.data);
         setQuestion(null);
@@ -787,6 +786,7 @@ function LoginedPage(props){
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
   };
+  
   const aiAdivse = () => {
     $.ajax({
       type: 'POST',
