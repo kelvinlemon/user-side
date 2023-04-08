@@ -83,6 +83,7 @@ function App() {
 
  
   const handleMenuClick = () => {
+    setButtonLabel('Menu');
     $.ajax({
       type: 'POST',
       url: 'https://sdp2023-dbapi.herokuapp.com/toorder',
@@ -94,7 +95,7 @@ function App() {
         setFoodItems(response[0][0]);
         setTable(response[1]['table']);
         setFoodType(getUniqueTypes(response[0][0]));
-        setButtonLabel('Menu');
+        //setButtonLabel('Menu');
       },
       error: function(error) {
         console.error(error);
